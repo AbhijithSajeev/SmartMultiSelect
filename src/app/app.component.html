@@ -1,0 +1,20 @@
+
+
+<form [formGroup]="testForm">
+    <div class="form-container">
+      <smart-multi-select fxFlex="20%"
+      #TestMultiDropdown
+      [controlName]="testFormControlName"
+      [dropDownLabel]="testDropDownLabel" 
+      [searchInputPlaceholder]="searchInputPlaceholder" 
+      [data]="testData"
+      [selectAllText]="selectAllText"
+      [enableSelectionChangeConfirmation]="false"
+      [selectionChangeConfirmationMessage]="filterChangeConfirmationMessage"
+      [enableValidation]="true"
+      [reValidate]="reValidate"
+      [ValidationMessage]="filterFormControlErrorMessage"
+      [dataLoadingStatus]="isdataLoading"
+      ></smart-multi-select>
+</div>
+  </form>

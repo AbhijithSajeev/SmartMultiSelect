@@ -1,0 +1,62 @@
+<form *ngIf="parentForm" [formGroup]="parentForm" >
+    <mat-form-field appearance="outline" class="pr-4" floatLabel="always"  #matformfield
+    (click)=openDropdown() [ngClass]="showMatHintForFormField() == true ? 'mat-form-field-mat-hint-height-adjust' : ''"
+    style="width: 100% !important;">
+        <mat-label class="mat-label-font-size">{{dropDownLabel}}<span class="mat-label-red">*</span></mat-label>
+        <mat-chip-list #chipListCountry ngDefaultControl [formControlName]="formControlName"
+        [title]="getTooltipText()">
+        <mat-chip *ngIf="selectedOptions?.length > 0 || (showSelectAllOnly && selectedLabelText?.length>0)" [removable]="matChipRemovable"
+            [selectable]="matChipSelectable" (removed)="dropdownSelectionClear()">
+            <span>{{ selectedLabelText}}</span>
+            <mat-icon matChipRemove *ngIf="matChipRemovable">cancel</mat-icon>
+        </mat-chip>
+        </mat-chip-list>
+        <div class="mat-select-arrow arrow-position"></div>
+        <mat-select disableOptionCentering panelClass="multiselect-position" #select>
+            <cdk-virtual-scroll-viewport minBufferPx="246.4" maxBufferPx="246.4"
+            [itemSize]="30.8" 
+            [style.height.px]=matSelectHeight
+            (scrolledIndexChange)="nextBatch($event)">
+            <div [formGroup]="form">
+                <mat-option *ngIf="data?.length>0"
+                class="search">
+                    <input 
+                    #search
+                    class="search-input"
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search" 
+                    (click)="$event.stopPropagation()" 
+                    (keydown.space)="$event.stopPropagation()"
+                    formControlName="dataSearchInput" 
+                    autocomplete="off"/>
+                </mat-option>
+                </div>
+            <mat-option *ngIf="(data?.length>0 || showSelectAllOnly) && showSelectAllWhenSearch">
+                <div>
+                    <mat-checkbox [checked] = "selectAllChecked" (click)="toggleSelectAll($event)" 
+                        [title]="selectAllText">
+                        {{selectAllText}}
+                    </mat-checkbox>
+                </div>
+            </mat-option>
+            <mat-option *cdkVirtualFor="let item of filteredData | async; let i = index; trackBy: trackByIdx">
+                    <mat-checkbox [checked]="item.selected" (click)="toggleOptionSelection($event, item)"
+                        [title]="item.display">
+                        {{ item.display }}
+                    </mat-checkbox>
+            </mat-option>
+        </cdk-virtual-scroll-viewport>
+        </mat-select>
+        <mat-progress-bar *ngIf="dataLoadingStatus" mode="indeterminate"></mat-progress-bar>
+  
+        <mat-error *ngIf="(parentForm.get(formControlName).invalid && !showMatHintForFormField())">{{ValidationMessage}}       
+        </mat-error>
+        <mat-hint class="mat-error" *ngIf="showMatHintForFormField() && parentForm.get(formControlName).touched && !dataLoadingStatus"
+        >{{cascadingErrorMessage}}
+      </mat-hint>
+      </mat-form-field>
+    </form>
+  
+  
+  

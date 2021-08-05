@@ -1,0 +1,82 @@
+cdk-virtual-scroll-viewport{
+  height: 246.4px;
+  margin:0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  overflow-x:hidden;
+::-webkit-scrollbar{
+  width: 1em;
+}
+-ms-overflow-style: scrollbar;
+}
+:host ::ng-deep .mat-form-field-flex {
+    min-height: 60px !important;
+    max-height: 60px !important;
+  }
+
+  :host ::ng-deep .mat-standard-chip {
+    min-height: 29px !important;
+  }
+
+  :host ::ng-deep  .mat-chip-list-wrapper .mat-standard-chip {
+    margin:-3px 2px -2px 0px !important;
+}
+:host ::ng-deep mat-progress-bar {
+  position: absolute !important;
+  bottom: 4px !important;
+}
+
+:host ::ng-deep .mat-form-field-infix{
+  min-height: 60px !important;
+  max-height: 60px !important;
+}
+.mat-select-panel {
+  margin-top: 45px;
+}
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: .25em 0;
+  height: 70px;
+}
+:host ::ng-deep .mat-form-field-appearance-outline .mat-select-arrow-wrapper{
+display: none !important;
+}
+:host ::ng-deep .mat-select-trigger {
+  width: 100%;
+  position: absolute;
+  bottom: 2px;
+  }
+:host ::ng-deep .mat-select-panel-wrap {
+  flex-basis: 100%;
+  margin-top: 3em;
+}
+.arrow-position{
+  position: absolute;
+  bottom: 22px;
+  right: -4px;
+}
+.mat-option {
+  font-size  : inherit !important;
+  line-height: 3em !important;
+  //height     : 2.2em !important;
+  height: 30.8px !important;
+}
+
+.mat-label-font-size{
+    font-size: 16px !important; // example
+  }
+  .search{
+    border:2px ridge rgb(251 252 255 / 50%) !important
+  }
+  .mat-error{
+    color: black !important;
+    font-size: 13px !important;
+  }
+  .search-input{
+    background: none;
+  }
+  .mat-form-field-mat-hint-height-adjust{
+    height: 7em !important;
+  }
